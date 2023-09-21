@@ -8,8 +8,8 @@ import LoadingMessage from './Components/LoadingMessage';
 import ErrorMessage from './Components/ErrorMessage';
 import ParticlesContainer from './Components/ParticlesContainer';
 
-interface PlanetsData {
-  geology_content: string;
+export interface PlanetsData {
+  geology_content: 'string';
   geology_source: string;
   id: string;
   images_geology: string;
@@ -24,6 +24,7 @@ interface PlanetsData {
   structure_content: string;
   structure_source: string;
   temperature: string;
+  [key: string]: string;
 }
 
 function App() {

@@ -6,10 +6,26 @@ import TitleAndInfoContainer from '../Components/PlanetPage/TitleAndInfoContaine
 import InfoButtonsContainer from '../Components/PlanetPage/InfoButtonsContainer';
 import PlanetImage from '../Components/PlanetPage/PlanetImage';
 import StatisticsContainer from '../Components/PlanetPage/StatisticsContainer';
+// types and interfaces
+import { PlanetsData } from '../App';
 
-export default function Planets({ allPlanetsData }) {
-  const [planetInfo, setPlanetInfo] = useState(null);
-  const [displayedInfo, setDisplayedInfo] = useState({});
+interface DisplayedInfo {
+  planetDecriptionText: string;
+  planetWikiLink: string;
+  picToDisplay: string;
+  additionalSurfacePic: string;
+  infoCategory: string;
+}
+
+export default function Planets({
+  allPlanetsData,
+}: {
+  allPlanetsData: PlanetsData[];
+}) {
+  const [planetInfo, setPlanetInfo] = useState<PlanetsData | null>(null);
+  const [displayedInfo, setDisplayedInfo] = useState<DisplayedInfo | null>(
+    null
+  );
 
   const params = useParams();
 
@@ -24,12 +40,15 @@ export default function Planets({ allPlanetsData }) {
     changeDisplayedInfo('overview', 'images_planet');
   }, [planetInfo]);
 
-  function changeDisplayedInfo(info, pic) {
+  function changeDisplayedInfo(
+    info: 'overview' | 'structure' | 'geology',
+    pic: 'images_planet' | 'images_internal' | 'images_geology'
+  ) {
     let planetDecriptionText = '';
     let planetWikiLink = '';
     let picToDisplay = '';
     let additionalSurfacePic = '';
-    let infoCategory = info;
+    const infoCategory = info;
 
     if (planetInfo) {
       planetDecriptionText = planetInfo[`${info}_content`];
