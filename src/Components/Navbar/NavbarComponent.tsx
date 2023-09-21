@@ -7,10 +7,23 @@ import HamburgerIcon from '../../assets/icon-hamburger.svg';
 // components
 import MobileMenuComponent from './MobileMenuComponent';
 import DesktopMenuComponent from './DesktopMenuComponent';
+// imported types and interfaces
+import { PlanetsData } from '../../App';
+
+// TYPES AND INTERFACES
+interface StyledHeaderContainerProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  mobilemenu: string;
+}
+
+interface PlanetsNavInfo {
+  id: string;
+  name: string;
+  linkcolor: string;
+}
 
 // STYLES
-
-const StyledHeaderContainer = styled.div`
+const StyledHeaderContainer = styled.div<StyledHeaderContainerProps>`
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   background-color: var(--background-color);
   position: ${(props) => (props.mobilemenu === 'true' ? 'fixed' : 'initial')};
@@ -67,13 +80,17 @@ const StyledHeader = styled.div`
   }
 `;
 
-export default function Navbar({ allPlanetsData }) {
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
+export default function Navbar({
+  allPlanetsData,
+}: {
+  allPlanetsData: PlanetsData[];
+}) {
+  const [isMobileMenu, setIsMobileMenu] = useState<boolean>(false);
 
   function toggleMobileMenu() {
     setIsMobileMenu((prev) => !prev);
   }
-  const planetsNavInfo = allPlanetsData.map((planet) => {
+  const planetsNavInfo: PlanetsNavInfo[] = allPlanetsData.map((planet) => {
     return {
       id: planet.id,
       name: planet.name.toLowerCase(),
