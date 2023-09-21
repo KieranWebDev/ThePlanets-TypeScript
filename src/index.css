@@ -1,0 +1,60 @@
+/* CSS VARIABLES */
+:root {
+  /* fonts */
+  --text-font: 'League Spartan', sans-serif;
+  --title-font: 'Antonio', sans-serif;
+  --font-size-reg: 16px;
+  --font-size-sm: 12px;
+  --font-size-lg: 40px;
+  --font-size-xl: 80px;
+  /* color system */
+  --font-color: #ffffff;
+  --secondary-font-color: #838391;
+  --background-color: #070724;
+  --button-hover: #38384f;
+  --mercury: #419ebb;
+  --venus: #eda249;
+  --earth: #6f2ed6;
+  --mars: #d14c32;
+  --jupiter: #ecad7a;
+  --saturn: #fccb6b;
+  --uranus: #1ec2a4;
+  --neptune: #2d68f0;
+  /* line height */
+  --standard-line-height: 25px;
+  --lg-line-height: 52px;
+  --xl-line-height: 103px;
+  /* letter-spacing */
+  --xs-letter-spacing: -1.5px;
+  --small-letter-spacing: -1px;
+  --lg-letter-spacing: 2.6px;
+}
+/* CSS RESETS */
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+/* General */
+body {
+  font-family: var(--text-font);
+  background: url('./assets/background-stars.svg');
+  background-color: var(--background-color);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: var(--font-color);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font);
+}
