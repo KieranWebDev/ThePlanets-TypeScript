@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project is a full-stack Single Page Application (SPA) that enables users to explore and learn about the planets in our Solar System. The front end of the application is built using React, React Router, Styled Components, Framer Motion, and particlesJs. The backend utilizes Superbase's Postgres database, offering a reliable and scalable data storage solution.
+This project is a full-stack Single Page Application (SPA) that enables users to explore and learn about the planets in our Solar System. The front end of the application is built using TypeScript, React, React Router, Styled Components, Framer Motion, and particlesJs. The backend utilizes Superbase's Postgres database, offering a reliable and scalable data storage solution.
 
 The site is fully responsive for desktops, tablets and mobile devices. It was built using a mobile-first approach.
 
@@ -55,6 +55,7 @@ During the development process, Miragejs was employed to simulate a server befor
 
 ### built with
 
+- TypeScript
 - React
 - React Router
 - Styled Components
