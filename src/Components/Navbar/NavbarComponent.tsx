@@ -16,7 +16,7 @@ interface StyledHeaderContainerProps
   mobilemenu: string;
 }
 
-interface PlanetsNavInfo {
+export interface PlanetsNavInfo {
   id: string;
   name: string;
   linkcolor: string;

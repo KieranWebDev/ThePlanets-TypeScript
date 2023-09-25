@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 //icon image
 import Chevron from '../../assets/icon-chevron.svg';
+// types and interfaces
+import { PlanetsNavInfo } from './NavbarComponent';
 
 // STYLES
 const MobileMenuContainer = styled.nav`
@@ -41,7 +43,7 @@ const StyledLink = styled(Link)`
   letter-spacing: 1.3px;
 `;
 
-const Circle = styled.div`
+const Circle = styled.div<StyledCircleProps>`
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -51,10 +53,21 @@ const Circle = styled.div`
 const ChevronIcon = styled.img`
   margin-left: auto;
 `;
+
+// types and interfaces
+
+interface MobileMenuComponentProps {
+  toggleMobileMenu: () => void;
+  planetsNavInfo: PlanetsNavInfo[];
+}
+interface StyledCircleProps extends React.HTMLAttributes<HTMLDivElement> {
+  circlecolor: string;
+}
+
 export default function MobileMenuComponent({
   toggleMobileMenu,
   planetsNavInfo,
-}) {
+}: MobileMenuComponentProps) {
   return (
     <MobileMenuContainer>
       <StyledUlMobile>

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { breakPoints } from '../../Data/breakPointAndImgSizes';
+// types and interfaces
+import { PlanetsNavInfo } from './NavbarComponent';
 
 // STYLES
 const StyledUlDesktop = styled.ul`
@@ -24,7 +26,7 @@ const StyledUlDesktop = styled.ul`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<StyledLinkProps>`
   @media (min-width: ${breakPoints.tablet}) {
     text-transform: uppercase;
     border-top: 5px solid transparent;
@@ -55,7 +57,15 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function DesktopMenuComponent({ planetsNavInfo }) {
+// types and interfaces
+interface StyledLinkProps extends React.HTMLAttributes<HTMLDivElement> {
+  linkcolor: string;
+}
+export default function DesktopMenuComponent({
+  planetsNavInfo,
+}: {
+  planetsNavInfo: PlanetsNavInfo[];
+}) {
   const location = useLocation();
 
   return (
