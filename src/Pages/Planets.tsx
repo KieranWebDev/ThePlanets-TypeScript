@@ -29,6 +29,7 @@ export default function Planets({
 
   const params = useParams();
 
+  // filters data based on the id in the url
   useEffect(() => {
     const filteredData = allPlanetsData.filter(
       (planet) => planet.id === params.id
@@ -36,10 +37,12 @@ export default function Planets({
     setPlanetInfo(filteredData[0]);
   }, [allPlanetsData, params.id]);
 
+  // set default displayed info upon render
   useEffect(() => {
     changeDisplayedInfo('overview', 'images_planet');
   }, [planetInfo]);
 
+  // change displayed info based on button clicked
   function changeDisplayedInfo(
     info: 'overview' | 'structure' | 'geology',
     pic: 'images_planet' | 'images_internal' | 'images_geology'
