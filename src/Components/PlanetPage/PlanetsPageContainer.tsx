@@ -36,6 +36,10 @@ const StyledPlanetPageContainer = styled.main`
   align-items: center;
 `;
 
-export default function PlanetsPageContainer({ children }) {
+export default function PlanetsPageContainer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <StyledPlanetPageContainer>{children}</StyledPlanetPageContainer>;
 }
