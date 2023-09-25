@@ -1,4 +1,11 @@
-export const breakPoints = {
+export interface BreakPoints {
+  tablet: string;
+  desktop: string;
+  lgDesktop: string;
+  navDesktop: string;
+}
+
+export const breakPoints: BreakPoints = {
   tablet: '650px',
   desktop: '1150px',
   lgDesktop: '1600px',
@@ -6,7 +13,15 @@ export const breakPoints = {
   navDesktop: '950px',
 };
 
-export const imageSizes = {
+export interface ImageSizes {
+  [planet: string]: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
+
+export const imageSizes: ImageSizes = {
   mercury: {
     mobile: '111px',
     tablet: '184px',

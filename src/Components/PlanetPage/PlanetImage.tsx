@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { imageSizes } from '../../Data/breakPointAndImgSizes';
-import { breakPoints } from '../../Data/breakPointAndImgSizes';
+import { breakPoints, imageSizes } from '../../Data/breakPointAndImgSizes';
 import { motion } from 'framer-motion';
+import { DisplayedInfo } from '../../Pages/Planets';
 
 const StyledPlanetContainer = styled.section`
   grid-area: image;
@@ -32,25 +32,25 @@ const StyledPlanetContainer = styled.section`
   }
 `;
 
-const StyledImageContainer = styled(motion.div)`
+const StyledImageContainer = styled(motion.div)<StyledImageContainerProps>`
   position: relative;
-  max-height: ${(props) => imageSizes[props.planetid].mobile};
-  max-width: ${(props) => imageSizes[props.planetid].mobile};
+  max-height: ${(props) => imageSizes[props.$planetid].mobile};
+  max-width: ${(props) => imageSizes[props.$planetid].mobile};
 
   @media (min-width: ${breakPoints.tablet}) {
-    max-height: ${(props) => imageSizes[props.planetid].tablet};
-    max-width: ${(props) => imageSizes[props.planetid].tablet};
+    max-height: ${(props) => imageSizes[props.$planetid].tablet};
+    max-width: ${(props) => imageSizes[props.$planetid].tablet};
   }
 
   @media (min-width: ${breakPoints.desktop}) {
     max-height: ${(props) =>
-      `calc(${imageSizes[props.planetid].desktop} - 100px)`};
+      `calc(${imageSizes[props.$planetid].desktop} - 100px)`};
     max-width: ${(props) =>
-      `calc(${imageSizes[props.planetid].desktop} - 100px)`};
+      `calc(${imageSizes[props.$planetid].desktop} - 100px)`};
   }
   @media (min-width: ${breakPoints.lgDesktop}) {
-    max-height: ${(props) => imageSizes[props.planetid].desktop};
-    max-width: ${(props) => imageSizes[props.planetid].desktop};
+    max-height: ${(props) => imageSizes[props.$planetid].desktop};
+    max-width: ${(props) => imageSizes[props.$planetid].desktop};
   }
 `;
 
@@ -58,16 +58,16 @@ const StyledImageMain = styled(motion.img)`
   width: 100%;
   height: 100%;
 `;
-const StyledImageSecondary = styled.img`
+const StyledImageSecondary = styled(motion.img)<StyledImageContainerProps>`
   height: 85px;
   width: 70px;
   position: absolute;
   left: 50%;
 
   top: ${(props) => {
-    if (props.planetid === 'jupiter') {
+    if (props.$planetid === 'jupiter') {
       return '95%';
-    } else if (props.planetid === 'saturn') {
+    } else if (props.$planetid === 'saturn') {
       return '90%';
     } else {
       return '100%';
@@ -80,9 +80,9 @@ const StyledImageSecondary = styled.img`
     width: 100px;
 
     top: ${(props) => {
-      if (props.planetid === 'jupiter') {
+      if (props.$planetid === 'jupiter') {
         return '82%';
-      } else if (props.planetid === 'saturn') {
+      } else if (props.$planetid === 'saturn') {
         return '72%';
       } else {
         return '90%';
@@ -96,47 +96,63 @@ const StyledImageSecondary = styled.img`
   }
 `;
 
-export default function PlanetImage({ displayedInfo, planetName, planetId }) {
+// types and interfaces
+interface PlanetImageProps {
+  displayedInfo: DisplayedInfo | null;
+  planetName: string;
+  planetId: string;
+}
+
+interface StyledImageContainerProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  $planetid: string;
+}
+
+export default function PlanetImage({
+  displayedInfo,
+  planetName,
+  planetId,
+}: PlanetImageProps) {
   return (
     <>
-      {!displayedInfo.additionalSurfacePic && (
+      {!displayedInfo?.additionalSurfacePic && (
         <StyledPlanetContainer>
           <StyledImageContainer
-            planetid={planetId}
-            key={displayedInfo.picToDisplay}
+            $planetid={planetId}
+            key={displayedInfo?.picToDisplay}
             initial={{ opacity: 0, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             // exit={{ opacity: 0, y: 0 }}
             transition={{ duration: 1.2 }}
           >
             <StyledImageMain
-              src={displayedInfo.picToDisplay}
+              src={displayedInfo?.picToDisplay}
               alt={planetName}
             />
           </StyledImageContainer>
         </StyledPlanetContainer>
       )}
-      {displayedInfo.additionalSurfacePic && (
+      {displayedInfo?.additionalSurfacePic && (
         <StyledPlanetContainer>
           <StyledImageContainer
-            planetid={planetId}
-            key={displayedInfo.picToDisplay}
+            $planetid={planetId}
+            key={displayedInfo?.picToDisplay}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: 'easeOut', duration: 1.2 }}
           >
             <StyledImageMain
-              src={displayedInfo.picToDisplay}
+              src={displayedInfo?.picToDisplay}
               alt={planetName}
             />
             <StyledImageSecondary
-              key={displayedInfo.additionalSurfacePic}
+              key={displayedInfo?.additionalSurfacePic}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ ease: 'easeOut', duration: 1.2 }}
-              planetid={planetId}
+              $planetid={planetId}
               src={displayedInfo.additionalSurfacePic}
               alt={planetName + 'surface'}
             />

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../Data/breakPointAndImgSizes';
 import { motion } from 'framer-motion';
+import { PlanetsData } from '../../App';
 
 const StyledContainer = styled(motion.section)`
   grid-area: statistics;
@@ -69,7 +70,13 @@ const StyledStatInfo = styled.div`
   }
 `;
 
-export default function StatisticsContainer({ planetInfo, planetId }) {
+export default function StatisticsContainer({
+  planetInfo,
+  planetId,
+}: {
+  planetInfo: PlanetsData;
+  planetId: string;
+}) {
   return (
     <StyledContainer
       key={planetId}
