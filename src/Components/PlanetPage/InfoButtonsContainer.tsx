@@ -1,5 +1,6 @@
 import { breakPoints } from '../../Data/breakPointAndImgSizes';
 import styled from 'styled-components';
+import { DisplayedInfo } from '../../Pages/Planets';
 
 const StyledContainer = styled.div`
   ${'' /* grid-area: buttons; */}
@@ -24,7 +25,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<StyledButtonProps>`
   background-color: transparent;
   border: none;
   border-bottom: 5px solid transparent;
@@ -39,33 +40,33 @@ const StyledButton = styled.button`
 
   &.overview {
     border-bottom-color: ${(props) =>
-      props.infocategory === 'overview'
-        ? `var(--${props.buttonbordercolor})`
+      props.$infocategory === 'overview'
+        ? `var(--${props.$buttonbordercolor})`
         : 'none'};
     color: ${(props) =>
-      props.infocategory === 'overview'
+      props.$infocategory === 'overview'
         ? `var(--font-color)`
         : 'rgba(255, 255, 255, 0.5)'};
   }
 
   &.structure {
     border-bottom-color: ${(props) =>
-      props.infocategory === 'structure'
-        ? `var(--${props.buttonbordercolor})`
+      props.$infocategory === 'structure'
+        ? `var(--${props.$buttonbordercolor})`
         : 'none'};
     color: ${(props) =>
-      props.infocategory === 'structure'
+      props.$infocategory === 'structure'
         ? `var(--font-color)`
         : 'rgba(255, 255, 255, 0.5)'};
   }
 
   &.geology {
     border-bottom-color: ${(props) =>
-      props.infocategory === 'geology'
-        ? `var(--${props.buttonbordercolor})`
+      props.$infocategory === 'geology'
+        ? `var(--${props.$buttonbordercolor})`
         : 'none'};
     color: ${(props) =>
-      props.infocategory === 'geology'
+      props.$infocategory === 'geology'
         ? `var(--font-color)`
         : 'rgba(255, 255, 255, 0.5)'};
   }
@@ -89,39 +90,39 @@ const StyledButton = styled.button`
 
     &.overview {
       background-color: ${(props) =>
-        props.infocategory === 'overview'
-          ? `var(--${props.buttonbordercolor})`
+        props.$infocategory === 'overview'
+          ? `var(--${props.$buttonbordercolor})`
           : 'inherit'};
       &:hover {
         background-color: ${(props) =>
-          props.infocategory === 'overview'
-            ? `var(--${props.buttonbordercolor})`
+          props.$infocategory === 'overview'
+            ? `var(--${props.$buttonbordercolor})`
             : 'var(--button-hover)'};
       }
     }
 
     &.structure {
       background-color: ${(props) =>
-        props.infocategory === 'structure'
-          ? `var(--${props.buttonbordercolor})`
+        props.$infocategory === 'structure'
+          ? `var(--${props.$buttonbordercolor})`
           : 'inherit'};
       &:hover {
         background-color: ${(props) =>
-          props.infocategory === 'structure'
-            ? `var(--${props.buttonbordercolor})`
+          props.$infocategory === 'structure'
+            ? `var(--${props.$buttonbordercolor})`
             : 'var(--button-hover)'};
       }
     }
 
     &.geology {
       background-color: ${(props) =>
-        props.infocategory === 'geology'
-          ? `var(--${props.buttonbordercolor})`
+        props.$infocategory === 'geology'
+          ? `var(--${props.$buttonbordercolor})`
           : 'inherit'};
       &:hover {
         background-color: ${(props) =>
-          props.infocategory === 'geology'
-            ? `var(--${props.buttonbordercolor})`
+          props.$infocategory === 'geology'
+            ? `var(--${props.$buttonbordercolor})`
             : 'var(--button-hover)'};
       }
     }
@@ -156,21 +157,35 @@ const StyledNumberSpan = styled.span`
     margin-right: 1.5em;
   }
 `;
+// types and interfaces
+interface InfoButtonsContainerProps {
+  changeDisplayedInfo: (
+    info: 'overview' | 'structure' | 'geology',
+    pic: 'images_planet' | 'images_internal' | 'images_geology'
+  ) => void;
+  displayedInfo: DisplayedInfo | null;
+  buttonBorderColor: string;
+}
+
+interface StyledButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+  $buttonbordercolor: string;
+  $infocategory: string;
+}
 
 export default function InfoButtonsContainer({
   changeDisplayedInfo,
   displayedInfo,
   buttonBorderColor,
-}) {
+}: InfoButtonsContainerProps) {
   return (
     <StyledContainer>
       <StyledButton
         className="overview"
-        buttonbordercolor={buttonBorderColor}
+        $buttonbordercolor={buttonBorderColor}
         onClick={() => {
           changeDisplayedInfo('overview', 'images_planet');
         }}
-        infocategory={displayedInfo.infoCategory}
+        $infocategory={displayedInfo?.infoCategory || ''}
       >
         <StyledSmallScreenSpan>overview</StyledSmallScreenSpan>
         <StyledLgScreenSpan>
@@ -180,11 +195,11 @@ export default function InfoButtonsContainer({
 
       <StyledButton
         className="structure"
-        buttonbordercolor={buttonBorderColor}
+        $buttonbordercolor={buttonBorderColor}
         onClick={() => {
           changeDisplayedInfo('structure', 'images_internal');
         }}
-        infocategory={displayedInfo.infoCategory}
+        $infocategory={displayedInfo?.infoCategory || ''}
       >
         <StyledSmallScreenSpan>structure</StyledSmallScreenSpan>
         <StyledLgScreenSpan>
@@ -194,11 +209,11 @@ export default function InfoButtonsContainer({
 
       <StyledButton
         className="geology"
-        buttonbordercolor={buttonBorderColor}
+        $buttonbordercolor={buttonBorderColor}
         onClick={() => {
           changeDisplayedInfo('geology', 'images_geology');
         }}
-        infocategory={displayedInfo.infoCategory}
+        $infocategory={displayedInfo?.infoCategory || ''}
       >
         <StyledSmallScreenSpan>surface</StyledSmallScreenSpan>
         <StyledLgScreenSpan>

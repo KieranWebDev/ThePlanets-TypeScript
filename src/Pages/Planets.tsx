@@ -9,7 +9,7 @@ import StatisticsContainer from '../Components/PlanetPage/StatisticsContainer';
 // types and interfaces
 import { PlanetsData } from '../App';
 
-interface DisplayedInfo {
+export interface DisplayedInfo {
   planetDecriptionText: string;
   planetWikiLink: string;
   picToDisplay: string;

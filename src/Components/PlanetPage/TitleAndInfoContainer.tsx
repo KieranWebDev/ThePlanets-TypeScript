@@ -3,6 +3,8 @@ import { breakPoints } from '../../Data/breakPointAndImgSizes';
 // icons
 import SourceIcon from '../../assets/icon-source.svg';
 import { motion } from 'framer-motion';
+// types and interfaces
+import { DisplayedInfo } from '../../Pages/Planets';
 
 const StyledContainer = styled.section`
   grid-area: titleInfo;
@@ -74,7 +76,13 @@ const StyledLink = styled(motion.div)`
   }
 `;
 
-export default function TitleAndInfoContainer({ planetName, displayedInfo }) {
+export default function TitleAndInfoContainer({
+  planetName,
+  displayedInfo,
+}: {
+  planetName: string;
+  displayedInfo: DisplayedInfo | null;
+}) {
   return (
     <StyledContainer>
       <StyledH1
@@ -87,19 +95,19 @@ export default function TitleAndInfoContainer({ planetName, displayedInfo }) {
         {planetName}
       </StyledH1>
       <StyledTextAndLinkContainer
-        key={displayedInfo.planetDecriptionText}
+        key={displayedInfo?.planetDecriptionText}
         initial={{ opacity: 0, x: +40 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: +40 }}
         transition={{ ease: 'easeOut', duration: 1 }}
       >
-        <StyledP>{displayedInfo.planetDecriptionText}</StyledP>
+        <StyledP>{displayedInfo?.planetDecriptionText}</StyledP>
         <StyledLink>
           Source :
           <a
             target="_blank"
             rel="noreferrer"
-            href={displayedInfo.planetWikiLink}
+            href={displayedInfo?.planetWikiLink}
           >
             Wikipedia
             <img src={SourceIcon} alt="link icon" />
