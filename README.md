@@ -10,7 +10,7 @@ The site is fully responsive for desktops, tablets and mobile devices. It was bu
 
 During the development process, Miragejs was employed to simulate a server before integrating the actual backend. This allowed for efficient testing and development of the front-end components and interactions.
 
-Frontend Mentor.io provided the Figma design file for this project. All of the code implementations are my own original work.
+**NOTE:** Frontend Mentor.io provided the Figma design file for this project. All of the code implementations are my own original work.
 
 ## Table of contents
 
