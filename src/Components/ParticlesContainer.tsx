@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Particles from 'react-particles';
 import { loadFull } from 'tsparticles';
 import particleOptions from '../Data/particleOptions';
+import { Engine, IOptions, RecursivePartial } from 'tsparticles-engine';
 
 // Styles
 const StyledParticlesContainer = styled.div`
@@ -11,11 +12,20 @@ const StyledParticlesContainer = styled.div`
   z-index: -1;
 `;
 
+// types and interfaces
+interface ParticleOptions extends RecursivePartial<IOptions> {
+  particles: {
+    number: {
+      value: number;
+    };
+  };
+}
+
 function ParticlesContainer() {
-  const [particleCount, setParticleCount] = useState(200);
-  const windowWidth = useRef(window.innerWidth);
+  const [particleCount, setParticleCount] = useState<number>(200);
+  const windowWidth = useRef<number>(window.innerWidth);
   // particles
-  const particlesInit = useCallback(async (engine) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
 
@@ -37,7 +47,7 @@ function ParticlesContainer() {
     };
   }, []);
 
-  const updatedParticleOptions = {
+  const updatedParticleOptions: ParticleOptions = {
     ...particleOptions,
     particles: {
       ...particleOptions.particles,

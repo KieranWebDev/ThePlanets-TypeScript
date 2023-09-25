@@ -13,7 +13,7 @@ import { PlanetsData } from '../../App';
 // TYPES AND INTERFACES
 interface StyledHeaderContainerProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  mobilemenu: string;
+  $mobilemenu: string;
 }
 
 export interface PlanetsNavInfo {
@@ -26,7 +26,7 @@ export interface PlanetsNavInfo {
 const StyledHeaderContainer = styled.div<StyledHeaderContainerProps>`
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   background-color: var(--background-color);
-  position: ${(props) => (props.mobilemenu === 'true' ? 'fixed' : 'initial')};
+  position: ${(props) => (props.$mobilemenu === 'true' ? 'fixed' : 'initial')};
   width: 100%;
   top: 0;
   left: 0;
@@ -100,7 +100,7 @@ export default function Navbar({
 
   return (
     <>
-      <StyledHeaderContainer mobilemenu={isMobileMenu.toString()}>
+      <StyledHeaderContainer $mobilemenu={isMobileMenu.toString()}>
         <StyledHeader>
           <h2>THE PLANETS</h2>
           <nav>
