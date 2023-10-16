@@ -88,7 +88,7 @@ During the development process, Miragejs was employed to simulate a server befor
 
 - Although beyond the scope of my original intentions, I decided to experiment with adding animations. After experimenting with using plain CSS for animations I opted for the Framer Motion library. The docs are fairly easy to navigate and I was able to implement this without many roadblocks as my animations are pretty simple. Simple Transitions on hover and click effects are still handled with plain CSS
 
-- I also added a particle effect background using particlesjs. This was more difficult as I found the docs fairly confusing. I consulted with my new best friend ChatGPT and was able to breakdown and debug my code successfully.
+- I also added a particle effect background using particlesjs. This was more difficult as I found the docs fairly confusing. I consulted with my frenemy ChatGPT and was able to breakdown and debug my code successfully.
 
 - After completing the first iteration of my project, I wanted to refine the code and make it as DRY as possible. I used ChatGPT as a tool for this. Although some may view it as a controversial tool, I felt I learned a lot through this process. I fed it each component in turn and asked for a code review and acted upon the solutions that were useful; asking for further clarification in the process and thus learning more. Through its suggestions, I split some of the components down into smaller more efficient and reusable components. Additionally, I organized my environment variables and Superbase configurations into dedicated folders, such as "Config" and "Services.”
 
