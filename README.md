@@ -78,7 +78,7 @@ During the development process, Miragejs was employed to simulate a server befor
 
 - I used Styled Components for the first time and found it pretty easy to pick up and much cleaner than having a separate CSS file for each component. The Dynamic Styling features available were very handy and the scoping of styles helped to avoid a lot of headaches due to CSS clashing.
 
--React Router was an essential tool for this project and v6 is very user-friendly. I intend to use more of its features in my next project as I feel I was just scratching the surface of what I can do with it in this project.
+- React Router was an essential tool for this project and v6 is very user-friendly. I intend to use more of its features in my next project as I feel I was just scratching the surface of what I can do with it in this project.
 
 - As the project progressed I felt it would be a good opportunity to incorporate a backend using a SaaS, instead of relying on local data. I chose Superbase as it has an excellent free tier and is very user-friendly and intuitive to use. Although creating a backend may not have been strictly necessary for a project involving only the eight planets in our solar system, it presented a valuable learning experience and a stepping stone for more complex projects in the future.
 
